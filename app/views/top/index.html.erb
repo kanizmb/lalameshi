@@ -1,0 +1,88 @@
+<style type="text/css">
+  .dummy-header {
+    display: none;
+  }
+  .wrapper {
+  background: url(/images/common/udon_bg.png) no-repeat 10px -140px;
+  background-size: 300px;
+  }
+</style>
+
+<!-- header -->
+<header>
+  <h1><a href="/"><img src="/images/common/lalameshi_logo.png" alt="ララメシ"></a></h1>
+  <p class="head-lead">
+    <b>遅刻 is 欠席</b><br>
+    40分でおいしいごはんを食べよう
+  </p>
+</header>
+
+<section class="pickup">
+  <h2><i class="fa fa-rocket"></i> 今日のおすすめ！</h2>
+  <div class="pickup-inner">
+    <a href="/restaurants/1"><img src="/images/toppage/ricoebero2.jpg" alt="ricco e bello リコエベロ"></a>
+    <div class="picup-desc">
+      <h3><a href="/restaurants/1">ricco e bello リコエベロ</a></h3>
+      <p class="score"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i><i class="fa fa-star-o"></i> 3.51</p>
+    </div>
+    <div class="time">
+      <div class="time-inner">
+        <p class="time-required"><span>2</span>分</p>
+        <p class="distance"><span>210</span>m</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="genre-list">
+  <h2><i class="fa fa-cutlery"></i> ジャンルで選ぶ</h2>
+  <ul>
+    <% @categories.each do |category| %>
+      <li><%= image_tag(category.images_url, width: 50, height: 50) if category.images.present? %>
+      <% if category.images.blank? %><img src="http://dummyimage.com/50x50/cccccc/fff" alt="no image"><% end %><a href="/categories/<%= category.id %>"><%= category.name %></a></li>
+    <% end %>
+  </ul>
+</section>
+
+
+<section class="new-restaurant restaurant-lists">
+  <h2><i class="fa fa-paper-plane"></i> 新しく追加されたお店</h2>
+  <% @restaurants.each do |restaurant| %>
+
+    <div class="restaurant-list">
+
+      <%= image_tag(restaurant.image_url, width: 80, height: 80) if restaurant.image.present? %>
+      <% if restaurant.image.blank? %><img src="http://dummyimage.com/80x80/cccccc/fff" alt="no image"><% end %>
+
+      <h3><%= restaurant.restaurant_name %></h3>
+
+      <p class="score"><%= raw(restaurant.score_star) %><%= restaurant.tabelog_score %></p>
+
+      <div class="time">
+        <div class="time-inner">
+          <p class="time-required"><span><%= restaurant.time_required_from_school %></span>分</p>
+          <p class="distance"><span><%= restaurant.distance_from_school %></span>m</p>
+        </div>
+      </div>
+      <a href="/restaurants/<%= restaurant.id %>" class="cover-link">詳しく見る</a>
+
+    </div>
+  <% end %>
+  <a href="/restaurants/new" class="more-link" target="_blank"><i class="fa fa-caret-right"></i> レストラン新規追加</a>
+  
+</section>
+
+
+
+<section class="twitter-tagsearch">
+  <h2><i class="fa fa-share-alt"></i> ララメシなう！</h2>
+  <% @user_tweets.take(6).collect do |tweet| %>
+    <div class="tweet">
+      <%= image_tag(tweet.first_media_image_url(size: :small)) %><br>
+      <b><%= tweet.user.screen_name %>:</b> <%= auto_link(tweet.text.dup.gsub!("#lalameshi901",""), :html => {:target => '_blank'}) %>
+    </div>
+  <% end %>
+  <a href="https://twitter.com/hashtag/lalameshi901?f=realtime&amp;src=hash" class="more-link" target="_blank"><i class="fa fa-caret-right"></i> #lalameshi901 のツイートをすべて見る</a>
+  <a href="/tweet/new" class="more-link"><i class="fa fa-caret-right"></i> ララメシなうに投稿する</a>
+</section>
+

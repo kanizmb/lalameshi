@@ -1,0 +1,37 @@
+<!-- <p id="notice"><%= notice %></p> -->
+
+<h2><%= @category.name %></h2>
+
+<!-- <p>
+  <strong>Images:</strong>
+  <%= @category.images %>
+</p> -->
+
+<div class="restaurants-list">
+
+  <% @restaurants.each do |restaurant| %>
+    <div class="restaurant-list">
+
+          <%= image_tag(restaurant.image_url, width: 80, height: 80) if restaurant.image.present? %>
+          <% if restaurant.image.blank? %><img src="http://dummyimage.com/80x80/cccccc/fff" alt="no image"><% end %>
+
+          <h3><%= restaurant.restaurant_name %></h3>
+
+          <p class="score"><%= raw(restaurant.score_star) %></p>
+
+          <div class="time">
+            <div class="time-inner">
+              <p class="time-required"><span><%= restaurant.time_required_from_school %></span>分</p>
+              <p class="distance"><span><%= restaurant.distance_from_school %></span>m</p>
+            </div>
+          </div>
+          <a href="/restaurants/<%= restaurant.id %>" class="cover-link">詳しく見る</a>
+
+        </div>
+  <% end %>
+
+</div>
+
+
+<!-- <%= link_to 'Edit', edit_category_path(@category) %> |
+<%= link_to 'Back', categories_path %> -->

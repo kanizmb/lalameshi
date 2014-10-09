@@ -1,0 +1,7 @@
+<div class="tweet-form">
+  <%= form_tag(:tweet_index, multipart: true) do %>
+    <%= text_area_tag :tweet_text %>
+    <%= file_field_tag :tweet_image %>
+    <%= submit_tag %>
+  <% end %>
+</div>

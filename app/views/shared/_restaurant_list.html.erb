@@ -1,0 +1,19 @@
+<div class="restaurant-list">
+
+  <%= image_tag(restaurant.image_url, width: 80, height: 80) if restaurant.image.present? %>
+  <% if restaurant.image.blank? %><img src="http://dummyimage.com/80x80/cccccc/fff" alt="no image"><% end %>
+
+  <h3><%= restaurant.restaurant_name %></h3>
+
+  <p>☆☆☆☆☆☆<!-- 食べログスコアを星に変換するメソッドをcontrollerに書く --></p>
+
+  <div class="time">
+    <div class="time-inner">
+      <p class="time-required"><span><%= restaurant.time_required %></span>分</p>
+      <p class="distance"><span><%= restaurant.distance %></span> m</p>
+    </div>
+    
+  </div>
+  <a href="/restaurants/<%= restaurant.id %>">詳しく見る</a>
+
+</div>

@@ -1,0 +1,36 @@
+<%= form_for(@review) do |f| %>
+  <% if @review.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
+
+      <ul>
+      <% @review.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field comment-name">
+    <strong>お名前:</strong>
+    <%= f.text_field :user_name %>
+  </div>
+  <div class="field comment-latency">
+    <strong>料理提供までの時間:</strong>
+    <%= f.text_field :latency %> 分
+  </div>
+  <div class="field comment-paid">
+    <strong>支払った料金:</strong>
+    <%= f.number_field :paid %> 円
+  </div>
+  <div class="field">
+    <strong>コメント:</strong><br>
+    <%= f.text_area :review %>
+  </div>
+
+  <%= f.hidden_field :restaurant_id %>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

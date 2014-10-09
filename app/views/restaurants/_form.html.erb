@@ -1,0 +1,69 @@
+<%= form_for(@restaurant) do |f| %>
+  <% if @restaurant.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@restaurant.errors.count, "error") %> prohibited this restaurant from being saved:</h2>
+
+      <ul>
+      <% @restaurant.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+     <strong>店名:</strong><br>
+    <%= f.text_field :restaurant_name %>
+  </div>
+  <div class="field">
+     <strong>住所:</strong><br>
+    <%= f.text_area :address %>
+  </div>
+  <div class="field">
+     <strong>電話番号:</strong><br>
+    <%= f.text_field :tel %>
+  </div>
+  <div class="field">
+    <strong>定休日:</strong><br>
+    <%= f.text_field :holiday %>
+  </div>
+  <div class="field">
+    <strong>画像:</strong><br>
+    <%= f.file_field :image %>
+  </div>
+  <div class="field">
+    <strong>予算:</strong><br>
+    <%= f.number_field :budget %>
+  </div>
+  <div class="field">
+    <strong>食べログID:</strong><br>
+    <%= f.number_field :tabelog_id %>
+  </div>
+  <div class="field">
+    <strong>食べログ点数:</strong><br>
+    <%= f.text_field :tabelog_score %>
+  </div>
+  <div class="field">
+    <strong>所要時間:</strong>(option)<br>
+    <%= f.number_field :time_required %>
+  </div>
+  <div class="field">
+    <strong>距離:</strong>(option)<br>
+    <%= f.number_field :distance %>
+  </div>
+  <div class="field">
+    <strong>座標:</strong>(option)<br>
+    <%= f.text_field :geocode %>
+  </div>
+
+<div class="field">
+    <strong>カテゴリ:</strong><br />
+    <%= collection_check_boxes(:restaurant, :category_ids, Category.all, :id, :name) do |b| %>
+      <%= b.label { b.check_box + b.text } %>
+    <% end %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

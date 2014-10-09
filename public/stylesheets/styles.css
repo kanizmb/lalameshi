@@ -1,0 +1,280 @@
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro);
+
+/*common
+------------------------*/
+/*reset*/
+body,p {
+  margin: 0;
+  padding: 0;
+  font-size: 13px;
+}
+
+ul,li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #0084b4 !important;
+}
+a:hover {
+  background-color: rgba(0,0,0,0.1) !important;
+}
+h2 {
+  margin: 0;
+  margin-top: 10px;
+  padding:5px;
+  font-size: 14px;
+  color: #3C1318;
+  background: #FDD251 url(/images/common/wrinkled_paper.png);
+}
+h3 {
+  margin: 0;
+}
+
+.score i {
+  color: orange;
+}
+.guide-text {
+  padding: 5px;
+}
+
+/*layout*/
+.dummy-header {
+  text-align: center;
+  padding: 7px;
+  font-size: 18px;
+  background: orange;
+  border-bottom: 1px solid #cc9900;
+}
+.dummy-header a {
+  color: #fff !important;
+}
+
+header {
+  padding-bottom: 30px;
+  text-align: center;
+  background: url(/images/common/ph-chopsticks.png) no-repeat bottom center;
+  background-size: 200px;
+}
+header h1 img {
+  width: 80px;
+
+}
+.wrapper {
+  width: 320px;
+  /*iPhoneの自動フォントサイズ変更を無効に*/
+  -webkit-text-size-adjust: 100%;
+  border: 1px solid #ccc;
+}
+.more-link {
+  display: block;
+  padding: 5px;
+  text-align: right;
+  background-color: #d6ceb4;
+}
+.go-pagetop {
+  display: block;
+  text-align: right;
+  margin-top: 10px;
+  padding: 0 5px;
+  padding-bottom: 5px;
+}
+footer {
+  border-top: 1px solid #ccc;
+  padding: 5px;
+}
+footer .copy {
+  font-size: 10px;
+  text-align: center;
+}
+
+/*genre list*/
+.genre-list ul {
+  width: 100%;
+  overflow: hidden;
+  font-size: 12px;
+  font-weight: bold;
+}
+.genre-list ul li {
+  float: left;
+  position: relative;
+  width: 50%;
+  overflow: hidden;
+  border-bottom: 1px dotted #ccc;
+}
+
+.genre-list ul li a {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 17px 0 0 55px;
+}
+.genre-list ul li img {
+  float: left;
+  width: 50px;
+  margin-right: 10px;
+
+  vertical-align: middle;
+}
+
+/*restaurant list*/
+.restaurant-list {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  border-bottom: 1px dotted #ccc;
+}
+.restaurant-list h3 {
+  margin-top: 8px;
+}
+.restaurant-list img {
+  float: left;
+  margin-right: 10px;
+}
+.time {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  z-index: 10;
+}
+.time-inner {
+  width: 60px;
+  height: 60px;
+  border-radius: 40px;
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  text-shadow:
+    -1px -1px #fff,
+    1px -1px #fff,
+    -1px 1px #fff,
+    1px 1px #fff;
+  background: #ff9933 url(/images/common/wrinkled_paper.png);
+}
+
+.time span {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+.time-required span {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.restaurant-list a {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-indent: -9999px;
+  z-index: 100;
+  top: 0;
+  left: 0;
+}
+
+
+/*index
+-------------------------*/
+.pickup-inner {
+  position: relative;
+}
+.pickup-inner img {
+  width: 100%;
+}
+.picup-desc {
+  position: absolute;
+  width: 100%;
+  padding: 8px 5px;
+  bottom: 0;
+  background: rgba(255,255,255,0.7)
+}
+
+/*twitter*/
+.twitter-tagsearch .more-link {
+  margin-top: -4px;
+}
+.twitter-tagsearch img {
+  max-width: 100%
+}
+.twitter-tagsearch .tweet {
+  padding: 7px 5px;
+  border-top: 1px dotted #ccc;
+}
+.twitter-tagsearch .tweet:first-child {
+  border: none; 
+} 
+
+/*lalameshi now tweet
+-------------------------*/
+.tweet-form #tweet_text {
+  width: 85%;
+  height: 100px;
+  margin: 10px;
+}
+
+
+
+/*restaurant detail
+-------------------------*/
+
+.restaurant-header {
+  position: relative;
+}
+
+.restaurant-detail h2.r-name {
+  font-size: 18px !important;
+  background: none;
+  margin-top: 0;
+}
+.restaurant-detail .meta {
+  font-size: 18px;
+  padding: 5px;
+}
+
+.review-form {
+  margin: 5px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.review-form strong {
+  display: inline-block;
+  width: 100px;
+}
+.review-form .comment-latency input,
+.review-form .comment-paid input, {
+  width: 30px;
+  padding: 4px;
+}
+.review-form h3 {
+  margin-bottom: 5px;
+  padding-bottom: 5px;
+  border-bottom: 1px dotted #ccc; 
+}
+.review-form input {
+  width: 130px;
+}
+.review-form textarea {
+  width: 280px;
+  height: 100px;
+}
+.restaurant-data {
+  border-top: 1px dotted #ccc;
+}
+.restaurant-data li {
+  padding: 8px;
+  border-bottom: 1px dotted #ccc;
+}
+
+.no-comment {
+  margin: 10px;
+}
+
+.comment {
+  padding: 5px;
+  border-bottom: 1px dotted #ccc;
+
+}

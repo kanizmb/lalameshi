@@ -1,0 +1,30 @@
+class TwitterClient
+
+  def initialize
+    @client = Twitter::REST::Client.new do |config|
+      config.consumer_key        = "YOUR_CONSUMER_KEY"
+      config.consumer_secret     = "YOUR_CONSUMER_SECRET"
+      config.access_token        = "YOUR_ACCESS_TOKEN"
+      config.access_token_secret = "YOUR_ACCESS_SECRET"
+    end
+  end
+
+  def lalameshi_tweets(search_word:)
+    @client.search(search_word, result_type: "recent", :lang => "ja")
+  end
+
+  def lalameshi_user_tweets(twitter_user:)
+    @client.user_timeline(twitter_user)
+  end
+
+  def update(text:, file:)
+    text = "#{text} #lalameshi901"
+
+    if file.present?
+      @client.update_with_media(text,file)
+    else
+      @client.update(text)
+    end
+  end
+
+end

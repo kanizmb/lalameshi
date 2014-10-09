@@ -1,0 +1,71 @@
+<div class="restaurant-detail">
+
+<p id="notice"><%= notice %></p>
+
+<div class="restaurant-header">
+  <%= image_tag(@restaurant.image_url, width: 320) if @restaurant.image.present? %>
+  <% if @restaurant.image.blank? %><img src="http://dummyimage.com/320x240/cccccc/fff" alt="no image"><% end %>
+
+  <div class="time">
+    <div class="time-inner">
+      <p class="time-required"><span><%= @restaurant.time_required_from_school %></span>分</p>
+      <p class="distance"><span><%= @restaurant.distance_from_school %></span>m</p>
+    </div>
+  </div>
+
+</div>
+
+
+<div class="meta">  
+  <h2 class="r-name"><%= @restaurant.restaurant_name %></h2>
+  <span class="score"><%= raw(@restaurant.score_star) %> <%= @restaurant.tabelog_score %></span> | 
+  <span class="budget">予算:<%= @restaurant.budget %>円〜</span>
+</div>
+
+<ul class="restaurant-data">
+  <li>
+    <strong>住所:</strong>
+    <%= @restaurant.address %>
+  </li>
+  <li>
+    <strong>電話番号:</strong>
+    <%= @restaurant.tel %>  
+  </li>
+  <li>
+    <strong>定休日:</strong>
+    <%= @restaurant.holiday %>
+  </li>
+  <li>
+    <a href="http://tabelog.com/osaka/A2701/A270101/<%= @restaurant.tabelog_id %>" target="_blank">このお店を食べログで見る</a> <i class="fa fa-external-link"></i>
+  </li>
+  <li>
+    <img src="http://maps.google.com/maps/api/staticmap?key=  AIzaSyBtpwSx0Q0kweHzLP3qBFUvdsNNgmqX8G0&amp;center=34.706545,135.498357&amp;zoom=14&amp;size=300x170&amp;sensor=false&amp;maptype=roadmap&amp;sensor=false&amp;markers=size:small|color:green|34.707536,135.496415&amp;markers=color:red|<%= @restaurant.position %>)">
+
+  </li>
+</ul>
+
+<p class="more-link"><i class="fa fa-caret-right"></i> <%= link_to 'レストランデータ修正', edit_restaurant_path(@restaurant) %></p>
+
+
+<h2>クチコミ</h2>
+
+<% unless @reviews.present? %><p class="no-comment">まだクチコミはありません</p><% end %>
+<% @reviews.each do |review| %>
+  <div class="comment">
+    <strong><i class="fa fa-comment"></i> <%= review.user_name %></strong> [<%= link_to 'Delete', review_path(review), method: :delete, data: { confirm: '削除してもよろしいですか？' } %>]
+    <br />
+    <p>待ち時間: <%= review.latency %> 分</p>
+    <p>支払額: <%= review.paid %> 円</p>
+    <p>コメント: <%= review.review %></p>
+  </div>
+<% end %>
+
+<div class="review-form">
+  <h3>コメントを投稿</h3>
+  <%= render 'reviews/form' %>
+</div>
+
+
+<!-- <%= link_to 'Back', restaurants_path %> -->
+
+</div>
